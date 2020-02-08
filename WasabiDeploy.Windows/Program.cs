@@ -14,9 +14,9 @@ namespace WasabiDeploy.Windows
 
             var versionPrefix = "1.1.10.2";
 
-            //IoHelpers.DeleteDirectory(workingDirectory);
-            //Directory.CreateDirectory(workingDirectory);
-            //await GitTools.CloneAsync("https://github.com/zkSNACKs/WalletWasabi.git", workingDirectory);
+            IoHelpers.DeleteDirectory(workingDirectory);
+            Directory.CreateDirectory(workingDirectory);
+            await GitTools.CloneAsync("https://github.com/zkSNACKs/WalletWasabi.git", workingDirectory);
 
             IoHelpers.DeleteDirectory(publishDirectory);
             await ProcessTools.StartAsync(
