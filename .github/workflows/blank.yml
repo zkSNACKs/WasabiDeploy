@@ -12,3 +12,14 @@ jobs:
     - name: Run
       working-directory: ./WasabiDeploy
       run: dotnet run --configuration Release
+      
+jobs:
+  build2:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run
+      working-directory: ./WasabiDeploy
+      run: dotnet run --configuration Release
