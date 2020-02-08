@@ -8,6 +8,5 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run
-      working-directory: ./WasabiDeploy
       run: dotnet run --configuration Release
 
