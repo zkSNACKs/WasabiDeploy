@@ -32,7 +32,7 @@ namespace WasabiDeploy.Publish
             {
                 (target: "win7-x64" ,outputDir: "win"),
                 (target: "linux-x64",outputDir: "lin"),
-                (target: "osx-x64",  outputDir: "osx")
+                (target: "osx-x64",  outputDir: "mac")
             };
 
             IoHelpers.DeleteDirectory(outputDirectory);
