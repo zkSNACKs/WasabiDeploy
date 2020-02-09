@@ -14,14 +14,6 @@ jobs:
       with:
         name: win
         path: ./WasabiDeploy.Publish\temp\output\win\
-    - uses: actions/upload-artifact@v1
-      with:
-        name: lin
-        path: ./WasabiDeploy.Publish\temp\output\lin
-    - uses: actions/upload-artifact@v1
-      with:
-        name: mac
-        path: ./WasabiDeploy.Publish\temp\output\mac
         
   Deploy-msi:
     needs: Build
