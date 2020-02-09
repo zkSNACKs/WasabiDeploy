@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WasabiDeploy.Windows", "WasabiDeploy.Windows\WasabiDeploy.Windows.csproj", "{70DAD4BD-8C90-427A-8AE4-B8057E8E226E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WasabiDeploy", "WasabiDeploy\WasabiDeploy.csproj", "{14FB29A4-2355-477C-8A13-8B0E099B5F74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WasabiDeploy", "WasabiDeploy\WasabiDeploy.csproj", "{14FB29A4-2355-477C-8A13-8B0E099B5F74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WasabiDeploy.Publish", "WasabiDeploy.Publish\WasabiDeploy.Publish.csproj", "{DC46193F-8682-4489-B293-F78EBC918703}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{14FB29A4-2355-477C-8A13-8B0E099B5F74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14FB29A4-2355-477C-8A13-8B0E099B5F74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14FB29A4-2355-477C-8A13-8B0E099B5F74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC46193F-8682-4489-B293-F78EBC918703}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC46193F-8682-4489-B293-F78EBC918703}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC46193F-8682-4489-B293-F78EBC918703}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC46193F-8682-4489-B293-F78EBC918703}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
