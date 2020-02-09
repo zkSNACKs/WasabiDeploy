@@ -19,11 +19,10 @@ jobs:
     needs: Build
     runs-on: windows-latest
     steps:
+      - uses: actions/checkout@v1
       - uses: actions/download-artifact@v1
         with:
           name: win
-      - run: cat win.zip
-      - uses: actions/checkout@v2
       - name: Run
         working-directory: ./WasabiDeploy.Windows
         run: dotnet run --configuration Release
