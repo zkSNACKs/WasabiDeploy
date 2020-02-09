@@ -13,5 +13,5 @@ jobs:
     - uses: actions/upload-artifact@v1
       with:
         name: win
-        path: ./WasabiDeploy.Publish\bin\Release\netcoreapp3.1\temp\output\win
+        path: ./WasabiDeploy.Publish\temp\output\win\
 
