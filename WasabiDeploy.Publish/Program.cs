@@ -17,7 +17,7 @@ namespace WasabiDeploy.Publish
 
             IoHelpers.DeleteDirectory(cloneDirectory);
             Directory.CreateDirectory(cloneDirectory);
-            GitTools.CloneAsync("https://github.com/zkSNACKs/WalletWasabi.git", cloneDirectory);
+            await GitTools.CloneAsync("https://github.com/zkSNACKs/WalletWasabi.git", cloneDirectory);
 
             // https://docs.microsoft.com/en-us/dotnet/articles/core/rid-catalog
             // BOTTLENECKS:
