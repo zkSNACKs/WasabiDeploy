@@ -13,7 +13,7 @@ jobs:
     - uses: actions/upload-artifact@v1
       with:
         name: win
-        path: ./WasabiDeploy.Publish\temp\output\win\
+        path: ./WasabiDeploy.Publish\temp\output\win.zip
         
   Deploy-msi:
     needs: Build
@@ -22,7 +22,7 @@ jobs:
       - uses: actions/download-artifact@v1
         with:
           name: win
-      - run: cat win
+      - run: cat win.zip
       - uses: actions/checkout@v2
       - name: Run
         working-directory: ./WasabiDeploy.Windows
