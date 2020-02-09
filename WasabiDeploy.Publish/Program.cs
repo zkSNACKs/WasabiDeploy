@@ -15,10 +15,11 @@ namespace WasabiDeploy.Publish
 
             var versionPrefix = "1.1.10.2";
 
+#if (!DEBUG)
             IoHelpers.DeleteDirectory(cloneDirectory);
             Directory.CreateDirectory(cloneDirectory);
             await GitTools.CloneAsync("https://github.com/zkSNACKs/WalletWasabi.git", cloneDirectory);
-
+#endif
             // https://docs.microsoft.com/en-us/dotnet/articles/core/rid-catalog
             // BOTTLENECKS:
             // Tor - win-32, linux-32, osx-64
@@ -36,6 +37,8 @@ namespace WasabiDeploy.Publish
 
             IoHelpers.DeleteDirectory(outputDirectory);
             Directory.CreateDirectory(outputDirectory);
+
+            Environment.SetEnvironmentVariable("DOTNET_CLI_TELEMETRY_OPTOUT", "1");
 
             foreach (var target in targets)
             {
