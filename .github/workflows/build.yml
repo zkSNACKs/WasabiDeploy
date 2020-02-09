@@ -6,13 +6,20 @@ jobs:
   Build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v2
     - name: Telemetry optout
-      run: SET DOTNET_CLI_TELEMETRY_OPTOUT=1
+      run: set DOTNET_CLI_TELEMETRY_OPTOUT=1
       shell: cmd
+
+    - uses: actions/checkout@v2
+    - name: Checkout main repository
+      with:
+        repository: 'https://github.com/zkSNACKs/WalletWasabi.git'
+           
+    - uses: actions/checkout@v2
     - name: Publish
       working-directory: ./WasabiDeploy.Publish
       run: dotnet run --configuration Release
+
     - uses: actions/upload-artifact@v1
       with:
         name: win
