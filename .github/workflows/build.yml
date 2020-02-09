@@ -10,13 +10,17 @@ jobs:
       run: set DOTNET_CLI_TELEMETRY_OPTOUT=1
       shell: cmd
       
-    - name: Checkout deploy repo     
+    - name: Checkout deploy repo   
       uses: actions/checkout@v2
+      with:
+        path: deploy
       
     - name: Checkout main repo
       uses: actions/checkout@v2
       with:
+        path: main
         repository: 'zkSNACKs/WalletWasabi'
+        
     - name: Publish
       working-directory: ./WasabiDeploy.Publish
       run: dotnet run --configuration Release
