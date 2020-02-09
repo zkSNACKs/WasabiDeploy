@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -47,8 +48,10 @@ namespace WasabiDeploy.Publish
 
                 await ProcessTools.StartAsync(
                     "dotnet",
-                    $"publish --configuration Release --force --output \"{outputDir}\" --self-contained true --runtime \"{target.target}\" /p:VersionPrefix={versionPrefix} --disable-parallel --no-cache /p:DebugType=none /p:DebugSymbols=false /p:ErrorReport=none /p:DocumentationFile=\"\" /p:Deterministic=true",
+                    $"publish --configuration Release --force --output \"{outputDir}\" --self-contained true --runtime \"{target.target}\" /p:VersionPrefix={versionPrefix} --disable-parallel --no-cache /p:DebugType=none /p:DebugSymbols=false /p:ErrorReport=none /p:DocumentationFile=\"\" /p:Deterministic=true /p:PublishSingleFile=true",
                     guiDirectory);
+
+                ZipFile.CreateFromDirectory(outputDir, $"{outputDir}.zip");
             }
         }
     }
