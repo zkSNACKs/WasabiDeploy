@@ -46,7 +46,7 @@ namespace WasabiDeploy.Publish
 
                 await ProcessTools.StartAsync(
                     "dotnet",
-                    $"publish --configuration Release --force --output \"{outputDir}\" --self-contained true --runtime \"{target.target}\" /p:VersionPrefix={versionPrefix} --disable-parallel --no-cache /p:DebugType=none /p:DebugSymbols=false /p:ErrorReport=none /p:DocumentationFile=\"\" /p:Deterministic=true /p:PublishSingleFile=true",
+                    $"publish --configuration Release --force --output \"{outputDir}\" --self-contained true --runtime \"{target.target}\" /p:VersionPrefix={versionPrefix} --disable-parallel --no-cache /p:DebugType=none /p:DebugSymbols=false /p:ErrorReport=none /p:DocumentationFile=\"\" /p:Deterministic=true",
                     guiDirectory);
             }
         }
