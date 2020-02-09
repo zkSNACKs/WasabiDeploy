@@ -15,9 +15,9 @@ namespace WasabiDeploy.Publish
 
             var versionPrefix = "1.1.10.2";
 
-            //IoHelpers.DeleteDirectory(cloneDirectory);
-            //Directory.CreateDirectory(cloneDirectory);
-            // GitTools.CloneAsync("https://github.com/zkSNACKs/WalletWasabi.git", cloneDirectory);
+            IoHelpers.DeleteDirectory(cloneDirectory);
+            Directory.CreateDirectory(cloneDirectory);
+            GitTools.CloneAsync("https://github.com/zkSNACKs/WalletWasabi.git", cloneDirectory);
 
             // https://docs.microsoft.com/en-us/dotnet/articles/core/rid-catalog
             // BOTTLENECKS:
