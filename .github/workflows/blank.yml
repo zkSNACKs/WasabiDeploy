@@ -6,8 +6,12 @@ jobs:
   Build2:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Run
-      working-directory: ./WasabiDeploy.Windows
+      working-directory: ./WasabiDeploy.Publish
       run: dotnet run --configuration Release
+    - uses: actions/upload-artifact@v1
+      with:
+        name: win
+        path: ./WasabiDeploy.Publish\bin\Release\netcoreapp3.1\temp\output\win
 
