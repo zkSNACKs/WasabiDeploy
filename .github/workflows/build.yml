@@ -16,8 +16,7 @@ jobs:
     - name: Checkout main repo
       uses: actions/checkout@v2
       with:
-        repository: 'https://github.com/zkSNACKs/WalletWasabi.git'
-
+        repository: 'zkSNACKs/WalletWasabi'
     - name: Publish
       working-directory: ./WasabiDeploy.Publish
       run: dotnet run --configuration Release
