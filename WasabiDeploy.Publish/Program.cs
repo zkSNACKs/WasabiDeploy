@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace WasabiDeploy.Publish
@@ -40,7 +41,7 @@ namespace WasabiDeploy.Publish
 
             Environment.SetEnvironmentVariable("DOTNET_CLI_TELEMETRY_OPTOUT", "1");
 
-            foreach (var target in targets)
+            foreach (var target in targets.Take(1))
             {
                 var outputDir = Path.Combine(outputDirectory, target.outputDir);
 
