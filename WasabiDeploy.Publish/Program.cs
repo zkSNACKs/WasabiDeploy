@@ -10,12 +10,7 @@ namespace WasabiDeploy.Publish
     {
         private static async Task Main(string[] args)
         {
-            // D:\a\WasabiDeploy\WasabiDeploy\WasabiDeploy.Publish\
-            // C:\work\WasabiDeploy\WasabiDeploy.Publish\bin\Debug\netcoreapp3.1\
-            var solutionDirectory = IoHelpers.FindDirectoryByName("./", "WasabiDeploy.Publish");
-            var rootDirectory = Path.GetFullPath(Path.Combine(solutionDirectory, ".."));
-            Console.WriteLine($"Rootdirectory: {rootDirectory}");
-            var workingDirectory = Path.Combine(rootDirectory, "WasabiDeploy.Temp");
+            var workingDirectory = IoHelpers.GetWorkingDirectory();
             var wasabiRepoDirectory = Path.Combine(workingDirectory, "WalletWasabi");
             var outputDirectory = Path.Combine(workingDirectory, "Outputs");
             var guiDirectory = Path.Combine(wasabiRepoDirectory, "WalletWasabi.Gui");
@@ -39,7 +34,7 @@ namespace WasabiDeploy.Publish
 
             var targets = new[]
             {
-                (target: "win7-x64" ,outputDir: "winsingle", plusargs: "/p:PublishSingleFile=true"),
+                (target: "win7-x64" ,outputDir: Constant.DeployWindowsSingle, plusargs: "/p:PublishSingleFile=true"),
                 (target: "win7-x64" ,outputDir: "win", plusargs:""),
                 (target: "linux-x64",outputDir: "lin", plusargs:""),
                 (target: "osx-x64",  outputDir: "mac", plusargs:"")

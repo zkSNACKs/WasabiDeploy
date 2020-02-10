@@ -62,5 +62,11 @@ namespace WasabiDeploy
 
             return null;
         }
+
+        public static string GetWorkingDirectory()
+        {
+            var rootDirectory = FindDirectoryByName("./", "WasabiDeploy");
+            return Path.Combine(rootDirectory, "WasabiDeploy.Temp");
+        }
     }
 }
