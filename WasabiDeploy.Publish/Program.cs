@@ -10,7 +10,7 @@ namespace WasabiDeploy.Publish
     {
         private static async Task Main(string[] args)
         {
-            var rootDirectory = new DirectoryInfo("../../../../..").FullName;
+            var rootDirectory = new DirectoryInfo("../../../..").FullName;
             var workingDirectory = Path.Combine(rootDirectory, "WasabiDeploy.Temp");
             var wasabiRepoDirectory = Path.Combine(workingDirectory, "WalletWasabi");
             var outputDirectory = Path.Combine(workingDirectory, "Outputs");
@@ -20,6 +20,7 @@ namespace WasabiDeploy.Publish
 
             if (!Directory.Exists(wasabiRepoDirectory))
             {
+                Console.WriteLine($"Cloning into {wasabiRepoDirectory}");
                 Directory.CreateDirectory(wasabiRepoDirectory);
                 await GitTools.CloneAsync("https://github.com/zkSNACKs/WalletWasabi.git", workingDirectory);
             }
