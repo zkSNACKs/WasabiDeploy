@@ -37,8 +37,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.sha:8 }}
-          release_name: Release ${{ github.sha:8 }}
+          tag_name: ${{ github.sha::8 }}
+          release_name: Release ${{ github.sha }}
           body: |
             Changes in this Release
             - First Change
