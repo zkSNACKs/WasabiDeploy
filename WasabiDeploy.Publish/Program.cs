@@ -13,7 +13,7 @@ namespace WasabiDeploy.Publish
             // D:\a\WasabiDeploy\WasabiDeploy\WasabiDeploy.Publish\
             // C:\work\WasabiDeploy\WasabiDeploy.Publish\bin\Debug\netcoreapp3.1\
             var solutionDirectory = IoHelpers.FindDirectoryByName("./", "WasabiDeploy.Publish");
-            var rootDirectory = Path.GetFullPath(Path.Combine(solutionDirectory, "../.."));
+            var rootDirectory = Path.GetFullPath(Path.Combine(solutionDirectory, ".."));
             Console.WriteLine($"Rootdirectory: {rootDirectory}");
             var workingDirectory = Path.Combine(rootDirectory, "WasabiDeploy.Temp");
             var wasabiRepoDirectory = Path.Combine(workingDirectory, "WalletWasabi");
