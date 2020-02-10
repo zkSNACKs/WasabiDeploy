@@ -36,8 +36,9 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SHA8: ${{ github.sha }}
         with:
-          tag_name: $(echo ${{ github.sha }} | cut -c1-8)
+          tag_name: $SHA8
           release_name: Release ${{ github.sha }}
           body: |
             Changes in this Release
