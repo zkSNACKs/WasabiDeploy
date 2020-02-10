@@ -10,6 +10,7 @@ namespace WasabiDeploy.Publish
     {
         private static async Task Main(string[] args)
         {
+            Console.WriteLine($"CurrentDirectory: {new DirectoryInfo("./").FullName}");
             var rootDirectory = new DirectoryInfo("./../../../..").FullName;
             Console.WriteLine($"Rootdirectory: {rootDirectory}");
             var workingDirectory = Path.Combine(rootDirectory, "WasabiDeploy.Temp");
