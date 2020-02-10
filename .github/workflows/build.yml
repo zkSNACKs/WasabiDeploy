@@ -30,14 +30,14 @@ jobs:
         path: ./WasabiDeploy.Temp/Outputs/winsingle.zip
         
   Create-release:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:    
       - name: Create Release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.sha }}
+          tag_name: ${{ github.sha::8 }}
           release_name: Release ${{ github.sha }}
           body: |
             Changes in this Release
