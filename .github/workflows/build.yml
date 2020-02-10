@@ -16,7 +16,7 @@ jobs:
     - name: Checkout main repo
       uses: actions/checkout@v2
       with:
-        path: main
+        path: ./WasabiDeploy.Temp/WalletWasabi
         repository: 'zkSNACKs/WalletWasabi'
         
     - name: Publish
