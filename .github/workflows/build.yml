@@ -6,14 +6,27 @@ jobs:
   Build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Run
+    - name: Telemetry optout
+      run: set DOTNET_CLI_TELEMETRY_OPTOUT=1
+      shell: cmd
+      
+    - name: Checkout deploy repo   
+      uses: actions/checkout@v2
+      
+    - name: Checkout main repo
+      uses: actions/checkout@v2
+      with:
+        path: ./WasabiDeploy.Temp/WalletWasabi
+        repository: 'zkSNACKs/WalletWasabi'
+        
+    - name: Publish
       working-directory: ./WasabiDeploy.Publish
       run: dotnet run --configuration Release
+
     - uses: actions/upload-artifact@v1
       with:
         name: win
-        path: ./WasabiDeploy.Publish\temp\output\win.zip
+        path: output\win.zip
         
   Deploy-msi:
     needs: Build
