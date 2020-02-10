@@ -10,18 +10,20 @@ namespace WasabiDeploy.Publish
     {
         private static async Task Main(string[] args)
         {
-            var workingDirectory = new DirectoryInfo("temp").FullName;
-            var cloneDirectory = Path.Combine(workingDirectory, "clone");
-            var outputDirectory = Path.Combine(workingDirectory, "output");
-            var guiDirectory = Path.Combine(cloneDirectory, "WalletWasabi", "WalletWasabi.Gui");
+            var rootDirectory = new DirectoryInfo("../../../../..").FullName;
+            var workingDirectory = Path.Combine(rootDirectory, "WasabiDeploy.Temp");
+            var wasabiRepoDirectory = Path.Combine(workingDirectory, "WalletWasabi");
+            var outputDirectory = Path.Combine(workingDirectory, "Outputs");
+            var guiDirectory = Path.Combine(wasabiRepoDirectory, "WalletWasabi.Gui");
 
             var versionPrefix = "1.1.10.2";
 
-#if (!DEBUG)
-            IoHelpers.DeleteDirectory(cloneDirectory);
-            Directory.CreateDirectory(cloneDirectory);
-            await GitTools.CloneAsync("https://github.com/zkSNACKs/WalletWasabi.git", cloneDirectory);
-#endif
+            if (!Directory.Exists(wasabiRepoDirectory))
+            {
+                Directory.CreateDirectory(wasabiRepoDirectory);
+                await GitTools.CloneAsync("https://github.com/zkSNACKs/WalletWasabi.git", workingDirectory);
+            }
+
             // https://docs.microsoft.com/en-us/dotnet/articles/core/rid-catalog
             // BOTTLENECKS:
             // Tor - win-32, linux-32, osx-64
@@ -32,9 +34,10 @@ namespace WasabiDeploy.Publish
 
             var targets = new[]
             {
-                (target: "win7-x64" ,outputDir: "win"),
-                (target: "linux-x64",outputDir: "lin"),
-                (target: "osx-x64",  outputDir: "mac")
+                (target: "win7-x64" ,outputDir: "winsingle", plusargs: "/p:PublishSingleFile=true"),
+                (target: "win7-x64" ,outputDir: "win", plusargs:""),
+                (target: "linux-x64",outputDir: "lin", plusargs:""),
+                (target: "osx-x64",  outputDir: "mac", plusargs:"")
             };
 
             IoHelpers.DeleteDirectory(outputDirectory);
@@ -48,7 +51,7 @@ namespace WasabiDeploy.Publish
 
                 await ProcessTools.StartAsync(
                     "dotnet",
-                    $"publish --configuration Release --force --output \"{outputDir}\" --self-contained true --runtime \"{target.target}\" /p:VersionPrefix={versionPrefix} --disable-parallel --no-cache /p:DebugType=none /p:DebugSymbols=false /p:ErrorReport=none /p:DocumentationFile=\"\" /p:Deterministic=true /p:PublishSingleFile=true",
+                    $"publish --configuration Release --force --output \"{outputDir}\" --self-contained true --runtime \"{target.target}\" /p:VersionPrefix={versionPrefix} --disable-parallel --no-cache /p:DebugType=none /p:DebugSymbols=false /p:ErrorReport=none /p:DocumentationFile=\"\" /p:Deterministic=true {target.plusargs}",
                     guiDirectory);
 
                 ZipFile.CreateFromDirectory(outputDir, $"{outputDir}.zip");
