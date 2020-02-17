@@ -49,7 +49,7 @@ jobs:
       - name: Save release URL
         shell: bash
         run: |
-          ${{ steps.create_release.outputs.upload_url }} > releaseurl.txt
+          "${{ steps.create_release.outputs.upload_url }}" > releaseurl.txt
       - name: Upload release URL
         uses: actions/upload-artifact@v1
         with:
