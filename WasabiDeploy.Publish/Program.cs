@@ -23,6 +23,10 @@ namespace WasabiDeploy.Publish
                 Directory.CreateDirectory(wasabiRepoDirectory);
                 await GitTools.CloneAsync("https://github.com/zkSNACKs/WalletWasabi.git", workingDirectory);
             }
+            else
+            {
+                Console.WriteLine($"Skipped cloning, found repository here: {wasabiRepoDirectory}");
+            }
 
             // https://docs.microsoft.com/en-us/dotnet/articles/core/rid-catalog
             // BOTTLENECKS:
