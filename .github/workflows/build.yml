@@ -33,6 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:    
       - name: Create Release
+        id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -48,12 +49,12 @@ jobs:
       - name: Save release URL
         shell: bash
         run: |
-          ${{ steps.create_release.outputs.upload_url }} > release_url.txt
+          ${{ steps.create_release.outputs.upload_url }} > releaseurl.txt
       - name: Upload release URL
         uses: actions/upload-artifact@v1
         with:
-          name: homework
-          path: release_url.txt
+          name: releaseurl
+          path: releaseurl.txt
                 
   Deploy-WindowsSingle:
     needs: Build
