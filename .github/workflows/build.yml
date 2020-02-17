@@ -45,7 +45,16 @@ jobs:
             - Second Change
           draft: false
           prerelease: true
-        
+      - name: Save release URL
+        shell: bash
+        run: |
+          ${{ steps.create_release.outputs.upload_url }} > release_url.txt
+      - name: Upload release URL
+        uses: actions/upload-artifact@v1
+        with:
+          name: homework
+          path: release_url.txt
+                
   Deploy-WindowsSingle:
     needs: Build
     runs-on: windows-latest
